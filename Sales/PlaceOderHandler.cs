@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Messages;
 using NServiceBus;
@@ -9,6 +10,7 @@ namespace Sales
     public class PlaceOrderHandler : IHandleMessages<PlaceOrder>
     {
         private static ILog log = LogManager.GetLogger<PlaceOrderHandler>();
+        static Random random = new Random();
 
         public Task Handle(PlaceOrder message, IMessageHandlerContext context)
         {
@@ -17,6 +19,10 @@ namespace Sales
             // This is normally where some business logic would occur
 
             Thread.Sleep(500);
+
+            if(random.Next(0,5)==0)
+                throw new Exception("Oops");
+
 
             var orderPlaced = new OrderPlaced
             {

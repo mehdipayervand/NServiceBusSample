@@ -53,6 +53,7 @@ namespace ClientUI
                 switch (key.Key)
                 {
                     case ConsoleKey.P:
+
                         // Instantiate the command
                         var command = new PlaceOrder
                         {
