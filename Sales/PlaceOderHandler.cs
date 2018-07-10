@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Messages;
 using NServiceBus;
 using NServiceBus.Logging;
@@ -14,6 +15,8 @@ namespace Sales
             log.Info($"Received PlaceOrder, OrderId = {message.OrderId}");
 
             // This is normally where some business logic would occur
+
+            Thread.Sleep(500);
 
             var orderPlaced = new OrderPlaced
             {

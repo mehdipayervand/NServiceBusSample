@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Messages;
 using NServiceBus;
@@ -17,7 +18,14 @@ namespace Billing
         {
             log.Info($"Received OrderPlaced, OrderId = {message.OrderId} - Charging credit card...");
 
-            return Task.CompletedTask;
+            Thread.Sleep(500);
+
+            var orderBilled = new OrderBilled()
+            {
+                OrderId = message.OrderId
+            };
+
+            return context.Publish(orderBilled);
         }
     }
 }
