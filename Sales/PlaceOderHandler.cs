@@ -20,8 +20,8 @@ namespace Sales
 
             Thread.Sleep(500);
 
-            if(random.Next(0,5)==0)
-                throw new Exception("Oops");
+            //if(random.Next(0,5)==0)
+            //    throw new Exception("Oops");
 
 
             var orderPlaced = new OrderPlaced

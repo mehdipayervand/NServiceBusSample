@@ -18,7 +18,7 @@ namespace Billing
         {
             log.Info($"Received OrderPlaced, OrderId = {message.OrderId} - Charging credit card...");
 
-            Thread.Sleep(500);
+            Thread.Sleep(8000);
 
             var orderBilled = new OrderBilled()
             {
